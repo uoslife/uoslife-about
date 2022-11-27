@@ -1,0 +1,4 @@
+{
+  "APP_URL": "https://uoslife.com",
+  "ALLOWED_LIST": ["*.uoslife.com", "*.uoslife.team", "*.uoslife.net"]
+}
