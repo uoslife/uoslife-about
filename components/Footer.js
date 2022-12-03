@@ -8,8 +8,8 @@ export default function Footer() {
           <Link href="/docs/privacy">
             <strong>개인정보처리방침</strong>
           </Link>
-          <Link href="/docs/tos">서비스 이용약관 </Link>
-          <Link href="/blog">공지사항</Link>
+          <Link href="/docs/tos">서비스 이용약관</Link>
+          <Link href="/notices">공지사항</Link>
         </div>
         <div>© 2022 시대생팀, All Rights Reserved.</div>
       </div>

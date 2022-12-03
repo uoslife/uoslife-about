@@ -1,18 +1,19 @@
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
+import SimpleListItem from '@/components/SimpleListItem'
+import Link from '@/components/Link'
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('blog')
-  return { props: { posts } }
+  const notices = await getAllFilesFrontMatter('notices')
+  return { props: { notices } }
 }
 
-export default function Home({ posts }) {
+export default function Home({ notices }) {
   return (
     <div className="flex flex-col gap-4">
-      <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
+      <PageSEO title={siteMetadata.author} description={siteMetadata.description} />
 
-      {posts.forEach((post) => console.log(post))}
       <div className="flex justify-center gap-8 rounded-lg bg-zinc-50 py-8 px-4 dark:bg-zinc-800">
         <img src="/static/cv_images/00_diagram.svg" alt="" className="hidden md:block" />
         <div className="flex flex-col justify-center text-zinc-600 dark:text-zinc-300">
@@ -29,6 +30,18 @@ export default function Home({ posts }) {
             <span className="text-blue-600">연결</span>하기 위해 앱 서비스를 운영하는 팀입니다.
           </p>
         </div>
+      </div>
+
+      <div className="rounded-lg bg-zinc-50 dark:bg-zinc-800">
+        {notices && notices.length > 0 && (
+          <Link href={`/notices/${notices[0].slug}`}>
+            <SimpleListItem
+              title={notices[0].title}
+              createdAt={notices[0].date}
+              category="🆕 최신 공지"
+            />
+          </Link>
+        )}
       </div>
 
       <div className="flex grid-cols-3 flex-col gap-4 md:grid">
